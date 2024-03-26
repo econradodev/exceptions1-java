@@ -3,6 +3,7 @@ package aplication;
 import model.entities.Account;
 import model.exceptions.DomainException;
 
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class Program {
@@ -31,7 +32,9 @@ public class Program {
             System.out.print("New balance: " + String.format("%.2f", account.getBalance()));
         } catch (DomainException e) {
             System.out.print("Withdraw error: " + e.getMessage());
-        } catch (RuntimeException e) {
+        } catch (InputMismatchException e) {
+            System.out.print("Data type error: The data could be -> accountNumber:int, balance & withdrawLimit:Double");
+        } catch (RuntimeException e){
             System.out.print("Unexpected error");
         }
     }
